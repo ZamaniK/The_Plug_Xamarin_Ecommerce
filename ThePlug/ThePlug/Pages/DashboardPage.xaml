@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ThePlug.Pages.DashboardPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid>
+            <Grid Margin="15,15,15,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="6*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+                <Image Source="menuicon.png"
+                       Margin="0,10,0,0"
+                       HeightRequest="35"
+                       WidthRequest="35"
+                       Aspect="Fill"
+                       Grid.Column="0"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Start">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="TapMenu" Tapped="TapMenu_Tapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text=""
+                       TextColor="Black"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       FontSize="Title"
+                       Grid.Column="1" />
+                <Grid  Grid.Column="2" HorizontalOptions="EndAndExpand"
+                       VerticalOptions="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                </Grid>
+                <Label Grid.Column="1"
+                       TextColor="#2C2C2C"
+                       Text="Pending Orders"
+                       FontSize="Large"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center" />
+            </Grid>
+        
+
+
+        <StackLayout Margin="0,65,0,0">
+                    <ListView x:Name="LvOrders"
+                      HasUnevenRows="True"
+                      ItemSelected="LvOrders_ItemSelected">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Padding="20">
+                                        <StackLayout Orientation="Horizontal">
+                                            <StackLayout>
+                                                <Label Text="Order No."
+                                               TextColor="#2C2C2C" />
+                                                <Label TextColor="#FA6400"
+                                               Text="{Binding Id}"/>
+                                            </StackLayout>
+                                        <StackLayout HorizontalOptions="EndAndExpand">
+                                            <Label Text="Made by"
+                                               TextColor="#2C2C2C" />
+                                            <Label TextColor="Black" 
+                                               Text="{Binding FullName}"/>
+                                        </StackLayout>
+                                        <StackLayout HorizontalOptions="EndAndExpand">
+                                                <Label Text="Made on"
+                                               TextColor="#2C2C2C" />
+                                                <Label TextColor="Black" 
+                                               Text="{Binding OrderPlaced}"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Total"
+                                           TextColor="#2C2C2C" />
+                                            <Label  HorizontalOptions="EndAndExpand"
+                                            TextColor="#2C2C2C" 
+                                           Text="{Binding OrderTotal, StringFormat='${0}'}" />
+                                        </StackLayout>
+                                    
+                                </StackLayout>
+                                
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+            </StackLayout>
+
+            <Grid x:Name="GridOverlay"
+                      IsVisible="False"
+                      ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.6*" />
+                    <ColumnDefinition Width="0.4*" />
+                </Grid.ColumnDefinitions>
+                <StackLayout BackgroundColor="White"
+                                 x:Name="SlMenu">
+                    <StackLayout BackgroundColor="#FA6400"
+                                 VerticalOptions="Center"
+                                 Spacing="0"
+                                 Margin="0">
+                        <Label Text="Welcome to The Plug" Margin="20,20,20,5"
+                               FontSize="Large"
+                               TextColor="White" />
+                        <Label x:Name="LblUserName"
+                               FontSize="Small"
+                               Margin="20,2,20,20"
+                               TextColor="White" />
+                    </StackLayout>
+                    <StackLayout Spacing="30"
+                                     Orientation="Horizontal"
+                                     Margin="20,0,0,0">
+                        <Image Source="order.png"
+                                   HeightRequest="30"
+                                   WidthRequest="30" />
+                        <Label Text="Completed Orders"
+                               TextColor="#2C2C2C"
+                                   HeightRequest="50"
+                                   VerticalTextAlignment="Center"
+                                   FontSize="20" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="TapOrders" Tapped="TapOrders_Tapped"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <StackLayout Spacing="30"
+                                     Orientation="Horizontal"
+                                     Margin="20,0,0,0">
+                        <Image Source="carticon.png"
+                                   HeightRequest="30"
+                                   WidthRequest="30" />
+                        <Label Text="Cart"
+                               TextColor="#2C2C2C"
+                                   HeightRequest="50"
+                                   VerticalTextAlignment="Center"
+                                   FontSize="20" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="TapCart" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <StackLayout Spacing="30"
+                                     Orientation="Horizontal"
+                                     Margin="20,0,0,0">
+                        <Image Source="contact.png"
+                                   HeightRequest="30"
+                                   WidthRequest="30" />
+                        <Label Text="Feedbacks"
+                               TextColor="#2C2C2C"
+                                   HeightRequest="50"
+                                   VerticalTextAlignment="Center"
+                                   FontSize="20" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="TapContact" Tapped="TapContact_Tapped"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <StackLayout Spacing="30"
+                                     Orientation="Horizontal"
+                                     Margin="20,0,0,0">
+                        <Image Source="logout.png"
+                                   HeightRequest="30"
+                                   WidthRequest="30" />
+                        <Label Text="Logout"
+                               TextColor="#2C2C2C"
+                                   HeightRequest="50"
+                                   VerticalTextAlignment="Center"
+                                   FontSize="20" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="TapLogout" Tapped="TapLogout_Tapped"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </StackLayout>
+                <BoxView Grid.Column="1"
+                             x:Name="BoxViewLayer">
+                    <BoxView.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="TapCloseMenu" Tapped="TapCloseMenu_Tapped" />
+                    </BoxView.GestureRecognizers>
+                </BoxView>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

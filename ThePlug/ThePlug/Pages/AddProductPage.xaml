@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:ThePlug.Models"
+             x:Class="ThePlug.Pages.AddProductPage">
+    <ContentPage.Content>
+        <StackLayout Spacing="20">
+            <Grid Margin="0,20,0,20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*" />
+                    <ColumnDefinition Width="7*" />
+                    <ColumnDefinition Width="1.5*" />
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0"
+                       Source="leftarrow.png"
+                       HeightRequest="30"
+                       WidthRequest="30"
+                       Margin="20,0,0,0">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="TapBack" Tapped="TapBack_Tapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Grid.Column="1"
+                       HorizontalTextAlignment="Center"
+                       FontSize="Title"
+                       Text="Add New Product"
+                       TextColor="#2C2C2C" />
+            </Grid>
+            <Entry Placeholder="Name"
+                   Margin="20,0,20,0"
+                   x:Name="EntName" />
+            <Entry Placeholder="Price"
+                   Margin="20,0,20,0"
+                   Keyboard="Telephone"
+                   x:Name="EntPrice" />
+            <local:Dropdown HorizontalOptions="FillAndExpand" Margin="20,0,20,0"
+                        VerticalOptions="Center"
+                        BackgroundColor="White"
+                        x:Name="dropdown"/>
+            <StackLayout HorizontalOptions="FillAndExpand" Margin="20,0,20,0"
+                     VerticalOptions="Center"
+                     Padding="10"
+                     BackgroundColor="Wheat">
+                <Label HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   x:Name="label"/>
+            </StackLayout>
+            <Button Text="File Picker" Clicked="Button_Clicked"
+                    Margin="20,0,20,0" x:Name="EntImageUrl" />
+            <Label Text="File is :" x:Name="lblImageUrl"/>
+            <Editor Placeholder="Please enter product detail"
+                    HeightRequest="150"
+                    Margin="20,0,20,0"
+                    x:Name="EntDetail" />
+            <Button Text="Send Message"
+                    BackgroundColor="#FA6400"
+                    TextColor="White"
+                    Margin="20,0,20,0"
+                    CornerRadius="25"
+                    x:Name="BtnAddProduct" 
+                    Clicked="BtnAddProduct_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
